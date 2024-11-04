@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7; /* خلفية خفيفة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background: #ffffff; /* خلفية النموذج */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50; /* لون زر تسجيل الدخول */
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049; /* لون الزر عند المرور فوقه */
+        }
+        .link-button {
+            display: block;
+            margin-top: 10px;
+            color: #00796b; /* لون النص للرابط */
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #00796b; /* حدود الرابط */
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .link-button:hover {
+            background-color: #00796b; /* لون الخلفية عند المرور فوق الرابط */
+            color: #ffffff; /* لون النص عند المرور فوق الرابط */
+        }
+        p {
+            color: red; /* لون النص لرسائل الأخطاء */
+            margin: 10px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <a href="{% url 'register' %}" class="link-button">Create Account</a>
+        <p>{{ error }}</p>
+    </form>
+</body>
+</html>
